@@ -1,5 +1,6 @@
 package org.georges.effun.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.persistence.Entity;
@@ -14,4 +15,5 @@ public class ResultatGeneral {
 	private Long id;
 	private String grandPrix;
 	private ArrayList<ResultatPilote> listeResultatsTousPilotes;
+	private LocalDate date;
 }
