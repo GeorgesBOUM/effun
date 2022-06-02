@@ -13,5 +13,5 @@ import lombok.Data;
 public class ResultatPilote {
 	private Pilote pilote;
 	private Duration meilleurTemps;
-	private Byte place;
+	private Integer place;
 }
