@@ -15,5 +15,5 @@ public class Pilote {
 	private String nationalite;
 	private Ecurie ecurie;
 	private String acronyme;
-	private Byte numero;
+	private Integer numero;
 }
