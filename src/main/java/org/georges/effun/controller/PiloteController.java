@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.collect.Lists;
 
+import net.bytebuddy.build.AccessControllerPlugin;
+
 @RestController
 public class PiloteController {
 
@@ -50,7 +52,10 @@ public class PiloteController {
 		 * Pour chaque rpl, je vérifie si l'id du pilote est celui recherché
 		 * Si oui, et si place = 1, alors on comptabilise une victoire pour le pilote
 		 * */
-		
+		rgs.getAllResultatsGeneraux().forEach(rgl -> rgl.getListeResultatsTousPilotes().stream()
+																					   .filter(rpl -> rpl.getPilote().getId().equals(id))
+																					   .filter(rpl -> rpl.getPlace().equals(1))
+																					   .count());
 		return 0;
 	}
 }
