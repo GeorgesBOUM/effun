@@ -11,6 +11,7 @@ import lombok.Data;
 @Entity
 @Table(name = "resultat_pilote")
 public class ResultatPilote {
+	private Integer id;
 	private Pilote pilote;
 	private Duration meilleurTemps;
 	private Integer place;
