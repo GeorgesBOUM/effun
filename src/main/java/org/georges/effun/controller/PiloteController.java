@@ -43,8 +43,14 @@ public class PiloteController {
 
 	@GetMapping("/pilotes:{piloteId}/victoire")
 	public int nombreVictoiresPilote(@PathVariable Integer id) {
-		ArrayList<ResultatGeneral> resultatsGeneraux = rgs.getAllResultatsGeneraux();
-		resultatsGeneraux.stream().filter(rg -> rg.getListeResultatsTousPilotes().);
+		/**
+		 * Etapes pour récupérer le total des victoires d'un pilote, ayant son id
+		 * Recupérer tous les résultats généraux => une liste (rgl)
+		 * Chaque élément de rgl contient une liste de résultats des pilotes (rpl)
+		 * Pour chaque rpl, je vérifie si l'id du pilote est celui recherché
+		 * Si oui, et si place = 1, alors on comptabilise une victoire pour le pilote
+		 * */
+		
 		return 0;
 	}
 }
