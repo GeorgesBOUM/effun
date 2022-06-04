@@ -32,7 +32,7 @@ L'application devra avoir les données suivantes :
 L'application devra exposer les routes suivantes :
 
 - GET /pilotes, elle devra retourner la liste des pilotes. 
-- POST /pilotes, (ajouter un pilote) (retour Ok + Id de l'écurie)
+- POST /pilotes, (ajouter un pilote) (retour Ok + Id du pilote)
 - GET /pilotes/{{piloteId}}/victoire, retourne le nombre de victoires selon l'id du pilote
 
 - GET /ecuries
