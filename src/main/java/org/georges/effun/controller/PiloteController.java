@@ -28,9 +28,9 @@ public class PiloteController {
     }
 
     @PostMapping("/pilotes")
-    public ResponseEntity<Long> addPilote(Pilote p) {
+    public ResponseEntity<Integer> addPilote(Pilote p) {
 	Pilote piloteAjoute = ps.ajoutPilote(p);
-	return new ResponseEntity<Long>(piloteAjoute.getEcurie().getId(), HttpStatus.OK);
+	return new ResponseEntity<Integer>(piloteAjoute.getId(), HttpStatus.OK);
     }
 
     @GetMapping("/pilotes/{piloteId}")
