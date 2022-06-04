@@ -46,7 +46,7 @@ Si deux pilotes ont le même nombre de points, celui qui a fini a la meilleur po
 
 Dans les deux cas si année est null => Prend la dernière année en cours
 
-__**Note:**__ Il serait plus simple pour le calcul des points d'ajouter un attibut dans la classe ResultatPilote par exemple, mais nous choisissons volontairement de faire autrement pour avoir l'occasion de mettre en pratique les notions d'algorithmie acquises.
+__Note:__ Il serait plus simple pour le calcul des points d'ajouter un attibut dans la classe ResultatPilote par exemple, mais nous choisissons volontairement de faire autrement pour avoir l'occasion de mettre en pratique les notions d'algorithmie acquises.
 
 - GET /pilotes/{{piloteId}}/details, retourne toutes les infos du pilote + ses points, sa place au classement de l'année en cours, son nombre de victoires (si 0 sa meilleur place doit pouvoir être affichée), ses titres de champions du monde + années
 - GET /pilotes/{{ecurieId}}/details, retourne toutes les infos de l'écurie, les pilotes de l'écurie, titres de champion constructeurs, nombre de victoires de l'écurie, classement de l'année en cours 
