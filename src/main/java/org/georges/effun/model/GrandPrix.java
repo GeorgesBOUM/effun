@@ -11,9 +11,9 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "resultat_general")
-public class ResultatGeneral {
+public class GrandPrix {
 	private Long id;
-	private String grandPrix;
+	private String nom;
 	private ArrayList<ResultatPilote> listeResultatsTousPilotes;
 	private LocalDate date;
 }

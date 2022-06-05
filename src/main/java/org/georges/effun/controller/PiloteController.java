@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.georges.effun.model.Pilote;
 import org.georges.effun.service.PiloteService;
-import org.georges.effun.service.ResultatGeneralService;
+import org.georges.effun.service.GrandPrixService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class PiloteController {
     @Autowired
     private PiloteService ps;
     @Autowired
-    private ResultatGeneralService rgs;
+    private GrandPrixService rgs;
 
     @GetMapping("/pilotes")
     public ArrayList<Pilote> getAllPilotes() {

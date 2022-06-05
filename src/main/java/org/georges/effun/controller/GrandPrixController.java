@@ -1,22 +1,16 @@
 package org.georges.effun.controller;
 
-import java.util.ArrayList;
-
-import org.georges.effun.model.Pilote;
-import org.georges.effun.model.ResultatGeneral;
-import org.georges.effun.model.ResultatPilote;
-import org.georges.effun.service.ResultatGeneralService;
-import org.georges.effun.utils.ComparaisonMeilleurTemps;
+import org.georges.effun.service.GrandPrixService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ResultatGeneralController {
+public class GrandPrixController {
 
     @Autowired
-    private ResultatGeneralService rgs;
+    private GrandPrixService rgs;
 
     @GetMapping("/standings/pilotes/{annee}")
     public void getClassementPilotesParAnnee(@PathVariable int annee) {
