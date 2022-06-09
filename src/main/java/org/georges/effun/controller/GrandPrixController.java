@@ -1,6 +1,11 @@
 package org.georges.effun.controller;
 
+import java.util.Map;
+
+import org.georges.effun.model.GrandPrix;
+import org.georges.effun.model.Pilote;
 import org.georges.effun.service.GrandPrixService;
+import org.georges.effun.utils.CalculPointsPilote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,26 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class GrandPrixController {
 
     @Autowired
-    private GrandPrixService rgs;
+    private GrandPrixService gps;
 
     @GetMapping("/standings/pilotes/{annee}")
-    public void getClassementPilotesParAnnee(@PathVariable int annee) {
-	/**
-	 * Le type de retour ne sera évidemment pas void. C'est pour éviter les erreurs syntaxiques
-	 * 
-	 * Je veux le classement des pilotes par années => une sorted list ?
-	 * Il faut calculer les points par pilote (distribués selon la place du pilote)
-	 * Plus un point bonus pour le meilleur tour si dans les 10 premiers
-	 * Si même nombre de points, avantage à la meilleure place
-	 * Si même nombre de points et même place, avantage aux plus de victoires
-	 * Chaque pilote devrait donc embarquer un compteur de point
-	 * => Il faut donc un résultat général par pilote et par année
-	 */
+    public Map<Pilote, Integer> getClassementPilotesParAnnee(@PathVariable int annee) {
 	
-	rgs.getResultatGeneralParAnnee(annee)
-	   .get() // peut être catcher le NoSuchElementException ?
-	   .getListeResultatsTousPilotes()
-	   .stream(); // stream en chantier
+	GrandPrix grandPrix = gps.getGrandPrixParAnnee(annee)
+	   .get(); // peut être catcher le NoSuchElementException ?
+	
+	return CalculPointsPilote.mappingPointsPilote(grandPrix);   
     }    
     
 }
