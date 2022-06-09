@@ -1,77 +1,58 @@
 package org.georges.effun.utils;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import org.georges.effun.model.GrandPrix;
 import org.georges.effun.model.Pilote;
-import org.georges.effun.model.ResultatGeneral;
 import org.georges.effun.model.ResultatPilote;
 
 public class CalculPointsPilote {
     
-    public static void mappingPointsPilote(ResultatGeneral rg) {
-	HashMap<Pilote, Integer> piloteEtPoints = new HashMap<Pilote, Integer>();
-	ArrayList<ResultatPilote> resultatPilotes = rg.getListeResultatsTousPilotes();
-	for (ResultatPilote rp : resultatPilotes) {
-	    int points = getPointsPiloteSelonPlace(rp) + ajoutPointBonus(rg);
-	    piloteEtPoints.put(rp.getPilote(), points);
+    public static Map<Pilote, Integer> mappingPointsPilote(GrandPrix gp) {
+	Map<Pilote, Integer> piloteEtPoints = new HashMap<>();
+	List<ResultatPilote> resultatPilotes = gp.getListeResultatsTousPilotes();
+	
+	resultatPilotes.forEach(rp -> {piloteEtPoints.put(rp.getPilote(), getPointsPiloteSelonPlace(rp));});
+	resultatPilotes.sort(new ComparaisonMeilleurTemps());
+	ResultatPilote plusRapide = resultatPilotes.get(0);
+	
+	if (estDansLesDixPremiers(plusRapide)) {
+	    piloteEtPoints.put(plusRapide.getPilote(), piloteEtPoints.get(plusRapide.getPilote()) + 1);
 	}
+	return piloteEtPoints;	
     }
     
     private static int getPointsPiloteSelonPlace(ResultatPilote rp) {
-	int points = 0;
 	Integer place = rp.getPlace();
 	switch (place) {
 	case 1:
-	    points = 25;
-	    break;
+	    return 25;
 	case 2:
-	    points = 18;
-	    break;
+	    return 18;
 	case 3:
-	    points = 15;
-	    break;
+	    return 15;
 	case 4:
-	    points = 12;
-	    break;
+	    return 12;
 	case 5:
-	    points = 10;
-	    break;
+	    return 10;
 	case 6:
-	    points = 8;
-	    break;
+	    return 8;
 	case 7:
-	    points = 6;
-	    break;
+	    return 6;
 	case 8:
-	    points = 4;
-	    break;
+	    return 4;
 	case 9:
-	    points = 2;
-	    break;
+	    return 2;
 	case 10:
-	    points = 1;
-	    break;
+	    return 1;
 	default:
-	    points = 0;
+	    return 0;
 	}
-	return points;
     }
     
     private static boolean estDansLesDixPremiers(ResultatPilote rp) {
 	return rp.getPlace() >= 1 && rp.getPlace() <= 10;
-    }
-    
-    private static ResultatPilote piloteAvecMeilleurTemps(ResultatGeneral rg) {
-	ArrayList<ResultatPilote> rgClasse =  rg.getListeResultatsTousPilotes();
-	rgClasse.sort(new ComparaisonMeilleurTemps());
-	return rgClasse.get(0);
-    }
-    private static int ajoutPointBonus(ResultatGeneral rg) {
-	if (estDansLesDixPremiers(piloteAvecMeilleurTemps(rg))) {
-	    return 1;
-	} else {
-	    return 0;
-	}
     }
 }
