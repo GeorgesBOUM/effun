@@ -1,11 +1,11 @@
 package org.georges.effun.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.georges.effun.model.Pilote;
-import org.georges.effun.service.PiloteService;
 import org.georges.effun.service.GrandPrixService;
+import org.georges.effun.service.PiloteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class PiloteController {
     private GrandPrixService rgs;
 
     @GetMapping("/pilotes")
-    public ArrayList<Pilote> getAllPilotes() {
+    public List<Pilote> getAllPilotes() {
 	return ps.getAllPilotes();
     }
 

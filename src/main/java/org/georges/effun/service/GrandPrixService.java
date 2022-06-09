@@ -1,6 +1,6 @@
 package org.georges.effun.service;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.georges.effun.model.GrandPrix;
@@ -16,11 +16,11 @@ public class GrandPrixService {
     @Autowired
     private GrandPrixRepository rgr;
 
-    public ArrayList<GrandPrix> getAllResultatsGeneraux() {
+    public List<GrandPrix> getAllResultatsGeneraux() {
 	return Lists.newArrayList(rgr.findAll());
     }
 
-    public Optional<GrandPrix> getResultatGeneralParAnnee(int annee) {
+    public Optional<GrandPrix> getGrandPrixParAnnee(int annee) {
 	return this.getAllResultatsGeneraux()
 		   .stream()
 		   .filter(rgl -> rgl.getDate().getYear() == annee)

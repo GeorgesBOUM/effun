@@ -1,6 +1,6 @@
 package org.georges.effun.service;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.georges.effun.model.Pilote;
@@ -16,7 +16,7 @@ public class PiloteService {
 	@Autowired
 	private PiloteRepository pr;
 
-	public ArrayList<Pilote> getAllPilotes() {
+	public List<Pilote> getAllPilotes() {
 		return Lists.newArrayList(pr.findAll());
 	}
 
