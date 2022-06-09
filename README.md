@@ -19,9 +19,9 @@ L'application devra avoir les données suivantes :
         Nom : String,
         Nationalité : String,
 
-    Resultat Général:
+    GrandPrix:
         id:  Long
-        GrandPrix : String,
+        nom : String,
         Resultat par Pilote: List[
             Pilote : Nom, Prenom, Numero, ecurie
             Meilleur Tour : Temps sous format 1:20:312 pour 1 minute 20, 312 milisecondes
