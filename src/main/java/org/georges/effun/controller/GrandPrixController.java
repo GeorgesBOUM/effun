@@ -1,7 +1,9 @@
 package org.georges.effun.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
+import org.georges.effun.model.Ecurie;
 import org.georges.effun.model.GrandPrix;
 import org.georges.effun.model.Pilote;
 import org.georges.effun.service.GrandPrixService;
@@ -21,9 +23,25 @@ public class GrandPrixController {
     public Map<Pilote, Integer> getClassementPilotesParAnnee(@PathVariable int annee) {
 	
 	GrandPrix grandPrix = gps.getGrandPrixParAnnee(annee)
-	   .get(); // peut être catcher le NoSuchElementException ?
+				 .get(); // peut être catcher le NoSuchElementException ?
 	
 	return CalculPointsPilote.mappingPointsPilote(grandPrix);   
-    }    
+    } 
+    
+    @GetMapping("/standings/ecurie/{annee}")
+    public Map<Ecurie, Integer> getClassementEcuriesParAnnee(@PathVariable int annee){
+	Map<Ecurie, Integer> ecuriesEtPoints = new HashMap<>();
+	this.getClassementPilotesParAnnee(annee)
+	    .entrySet()
+	    .stream()
+	    .forEach(entry -> {Ecurie key = entry.getKey().getEcurie();
+    	    		       if (ecuriesEtPoints.containsKey(key)) {
+    	    			   ecuriesEtPoints.put(key, ecuriesEtPoints.get(key) + entry.getValue());			
+    	    		       } else {
+    	    			   ecuriesEtPoints.put(key, entry.getValue());
+    	    		       }
+	    		    });
+	return ecuriesEtPoints;
+    }
     
 }
