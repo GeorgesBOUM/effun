@@ -1,6 +1,7 @@
 package org.georges.effun.service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.georges.effun.model.Ecurie;
 import org.georges.effun.repository.EcurieRepository;
@@ -20,5 +21,9 @@ public class EcurieService {
     
     public Ecurie ajoutEcurie(Ecurie e) {
 	return er.save(e);
+    }
+    
+    public Optional<Ecurie> getEcurieById(Long id) {
+	return er.findById(id);
     }
 }
